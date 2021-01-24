@@ -19,7 +19,7 @@ public extension NSLayoutAnchor {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult func pin(
+    @objc func pin(
         to anchor: NSLayoutAnchor<AnchorType>,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required
@@ -38,7 +38,7 @@ public extension NSLayoutAnchor {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult func pin(
+    @objc func pin(
         greaterThan anchor: NSLayoutAnchor<AnchorType>,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required
@@ -57,7 +57,7 @@ public extension NSLayoutAnchor {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult func pin(
+    @objc func pin(
         lessThan anchor: NSLayoutAnchor<AnchorType>,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required

@@ -5,8 +5,6 @@
 //  Created by Kyle Bashour on 1/12/21.
 //
 
-// swiftlint:disable attributes
-
 import UIKit
 
 /// A shared interface for the pinnable properties of `UIView` and `UILayoutGuide`.
@@ -35,7 +33,7 @@ public extension Pinnable {
     ///   - insets: Optional insets to apply to the constraints. The top, left, bottom, and right constants will be applied to the top, leading, bottom, and trailing edges, respectively. Defaults to `.zero`.
     ///   - exceptEdges: The edges to skip setting constrants to. Defaults to none.
     /// - Returns: An array of the created constraints.
-    @discardableResult func pinEdges(
+    func pinEdges(
         _ edges: UIRectEdge = .all,
         to object: Pinnable,
         insets: UIEdgeInsets = .zero,
@@ -59,7 +57,7 @@ public extension Pinnable {
     ///   - leading: Optional leading inset. Defaults to `0`.
     ///   - trailing: Optional trailing inset. Defaults to `0`.
     /// - Returns:  An array of the created constraints.
-    @discardableResult func pinHorizontally(
+    func pinHorizontally(
         to object: Pinnable,
         leading: CGFloat = 0,
         trailing: CGFloat = 0
@@ -74,7 +72,7 @@ public extension Pinnable {
     ///   - top: Optional top inset. Defaults to `0`.
     ///   - bottom: Optional bottom inset. Defaults to `0`.
     /// - Returns:  An array of the created constraints.
-    @discardableResult func pinVertically(
+    func pinVertically(
         to object: Pinnable,
         top: CGFloat = 0,
         bottom: CGFloat = 0
@@ -88,7 +86,7 @@ public extension Pinnable {
     ///   - object: The object to constrain the receiver to.
     ///   - offset: An optional offset for the constraints. The horizontal offset will be applied to the center X anchor, and the vertical offset will be applied to the center Y anchor. Defaults to `.zero`.
     /// - Returns: An array of the created constraints.
-    @discardableResult func pinCenter(
+    func pinCenter(
         to object: Pinnable,
         offset: UIOffset = .zero
     ) -> [NSLayoutConstraint] {
@@ -109,7 +107,7 @@ public extension Pinnable {
     /// - Parameters:
     ///   - object: The object to constrain the receiver to.
     /// - Returns: An array of the created constraints.
-    @discardableResult func pinSize(
+    func pinSize(
         to object: Pinnable
     ) -> [NSLayoutConstraint] {
         let height = heightAnchor.pin(to: object.heightAnchor)
@@ -129,7 +127,7 @@ public extension Pinnable {
     /// - Parameters:
     ///   - object: The size to constrain the receiver to.
     /// - Returns: An array of the created constraints.
-    @discardableResult func pinSize(
+    func pinSize(
         to size: CGSize
     ) -> [NSLayoutConstraint] {
         let height = heightAnchor.pin(to: size.height)
@@ -149,13 +147,13 @@ public extension Pinnable {
     /// - Parameters:
     ///   - object: The size to constrain the receiver's width and height to.
     /// - Returns: An array of the created constraints.
-    @discardableResult func pinSize(
+    func pinSize(
         to constant: CGFloat
     ) -> [NSLayoutConstraint] {
         pinSize(to: CGSize(width: constant, height: constant))
     }
 
-    private func disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded() {
+    internal func disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded() {
         (self as? UIView)?.translatesAutoresizingMaskIntoConstraints = false
     }
 }
