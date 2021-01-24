@@ -48,6 +48,40 @@ extension Pinnable {
         return (top: top, leading: leading, bottom: bottom, trailing: trailing)
     }
 
+    /// Constrain the horizontal edges of the receiver to the corresponding edges of the provided view or layout guide.
+    ///
+    /// - Parameters:
+    ///   - object: The object to constrain the receiver to.
+    ///   - leading: Optional leading inset. Defaults to `0`.
+    ///   - trailing: Optional trailing inset. Defaults to `0`.
+    /// - Returns:  A named tuple of the created constraints.
+    @discardableResult public func pinHorizontally(
+        to object: Pinnable,
+        leading: CGFloat = 0,
+        trailing: CGFloat = 0
+    ) -> (leading: NSLayoutConstraint, trailing: NSLayoutConstraint) {
+        let edges = pinEdges([.left, .right], to: object, insets: .init(top: 0, left: leading, bottom: 0, right: trailing))
+
+        return (leading: edges.leading!, trailing: edges.trailing!)
+    }
+
+    /// Constrain the vertical edges of the receiver to the corresponding edges of the provided view or layout guide.
+    ///
+    /// - Parameters:
+    ///   - object: The object to constrain the receiver to.
+    ///   - top: Optional top inset. Defaults to `0`.
+    ///   - bottom: Optional bottom inset. Defaults to `0`.
+    /// - Returns:  A named tuple of the created constraints.
+    @discardableResult public func pinVertically(
+        to object: Pinnable,
+        top: CGFloat = 0,
+        bottom: CGFloat = 0
+    ) -> (top: NSLayoutConstraint, bottom: NSLayoutConstraint) {
+        let edges = pinEdges([.top, .bottom], to: object, insets: .init(top: top, left: 0, bottom: bottom, right: 0))
+
+        return (top: edges.top!, bottom: edges.bottom!)
+    }
+
     /// Constrain the center of the receiver to the center of the provided view or layout guide.
     ///
     /// - Parameters:
