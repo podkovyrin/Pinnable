@@ -161,11 +161,7 @@ public extension Pinnable {
         pinSize(to: CGSize(width: constant, height: constant))
     }
 
-    internal func disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded() {
-        if let self = self as? UIView {
-            if self.translatesAutoresizingMaskIntoConstraints {
-                self.translatesAutoresizingMaskIntoConstraints = false
-            }
-        }
+    private func disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded() {
+        (self as? UIView)?.translatesAutoresizingMaskIntoConstraints = false
     }
 }

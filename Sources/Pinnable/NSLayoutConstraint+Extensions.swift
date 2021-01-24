@@ -35,7 +35,6 @@ public extension NSLayoutConstraint {
 
     internal func setUp() -> NSLayoutConstraint {
         (firstItem as? UIView)?.translatesAutoresizingMaskIntoConstraints = false
-        activate()
-        return self
+        return activate()
     }
 }
