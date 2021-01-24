@@ -31,16 +31,19 @@ public extension Pinnable {
     ///   - edges: The edges to constrain. The `left` and `right` edge will constrain the `leading` and `trailing` anchors, respectively. Defaults to `.all`.
     ///   - object: The object to constrain the receiver to.
     ///   - insets: Optional insets to apply to the constraints. The top, left, bottom, and right constants will be applied to the top, leading, bottom, and trailing edges, respectively. Defaults to `.zero`.
+    ///   - exceptEdges: The edges to skip setting constrants to. Defaults to none.
     /// - Returns: A named tuple of the created constraints. The properties are optional, as edges not specified will not have constraints.
     @discardableResult func pinEdges(
         _ edges: UIRectEdge = .all,
         to object: Pinnable,
-        insets: UIEdgeInsets = .zero
+        insets: UIEdgeInsets = .zero,
+        but exceptEdges: UIRectEdge = .init()
     ) -> (top: NSLayoutConstraint?, leading: NSLayoutConstraint?, bottom: NSLayoutConstraint?, trailing: NSLayoutConstraint?) {
-        let top = edges.contains(.top) ? topAnchor.pin(to: object.topAnchor, constant: insets.top) : nil
-        let leading = edges.contains(.left) ? leadingAnchor.pin(to: object.leadingAnchor, constant: insets.left) : nil
-        let bottom = edges.contains(.bottom) ? bottomAnchor.pin(to: object.bottomAnchor, constant: -insets.bottom) : nil
-        let trailing = edges.contains(.right) ? trailingAnchor.pin(to: object.trailingAnchor, constant: -insets.right) : nil
+        let _edges = edges.subtracting(exceptEdges)
+        let top = _edges.contains(.top) ? topAnchor.pin(to: object.topAnchor, constant: insets.top) : nil
+        let leading = _edges.contains(.left) ? leadingAnchor.pin(to: object.leadingAnchor, constant: insets.left) : nil
+        let bottom = _edges.contains(.bottom) ? bottomAnchor.pin(to: object.bottomAnchor, constant: -insets.bottom) : nil
+        let trailing = _edges.contains(.right) ? trailingAnchor.pin(to: object.trailingAnchor, constant: -insets.right) : nil
 
         disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
         NSLayoutConstraint.activate([top, leading, bottom, trailing].compactMap { $0 })
