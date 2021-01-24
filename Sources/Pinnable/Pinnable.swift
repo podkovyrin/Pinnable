@@ -24,15 +24,15 @@ public protocol Pinnable: AnyObject {
     var heightAnchor: NSLayoutDimension { get }
 }
 
-extension Pinnable {
+public extension Pinnable {
     /// Constrain the edges of the receiver to the corresponding edges of the provided view or layout guide.
-    /// 
+    ///
     /// - Parameters:
     ///   - edges: The edges to constrain. The `left` and `right` edge will constrain the `leading` and `trailing` anchors, respectively. Defaults to `.all`.
     ///   - object: The object to constrain the receiver to.
     ///   - insets: Optional insets to apply to the constraints. The top, left, bottom, and right constants will be applied to the top, leading, bottom, and trailing edges, respectively. Defaults to `.zero`.
     /// - Returns: A named tuple of the created constraints. The properties are optional, as edges not specified will not have constraints.
-    @discardableResult public func pinEdges(
+    @discardableResult func pinEdges(
         _ edges: UIRectEdge = .all,
         to object: Pinnable,
         insets: UIEdgeInsets = .zero
@@ -55,7 +55,7 @@ extension Pinnable {
     ///   - leading: Optional leading inset. Defaults to `0`.
     ///   - trailing: Optional trailing inset. Defaults to `0`.
     /// - Returns:  A named tuple of the created constraints.
-    @discardableResult public func pinHorizontally(
+    @discardableResult func pinHorizontally(
         to object: Pinnable,
         leading: CGFloat = 0,
         trailing: CGFloat = 0
@@ -72,7 +72,7 @@ extension Pinnable {
     ///   - top: Optional top inset. Defaults to `0`.
     ///   - bottom: Optional bottom inset. Defaults to `0`.
     /// - Returns:  A named tuple of the created constraints.
-    @discardableResult public func pinVertically(
+    @discardableResult func pinVertically(
         to object: Pinnable,
         top: CGFloat = 0,
         bottom: CGFloat = 0
@@ -88,7 +88,7 @@ extension Pinnable {
     ///   - object: The object to constrain the receiver to.
     ///   - offset: An optional offset for the constraints. The horizontal offset will be applied to the center X anchor, and the vertical offset will be applied to the center Y anchor. Defaults to `.zero`.
     /// - Returns: A named tuple of the created constraints.
-    @discardableResult public func pinCenter(
+    @discardableResult func pinCenter(
         to object: Pinnable,
         offset: UIOffset = .zero
     ) -> (x: NSLayoutConstraint, y: NSLayoutConstraint) {
@@ -110,7 +110,7 @@ extension Pinnable {
     /// - Parameters:
     ///   - object: The object to constrain the receiver to.
     /// - Returns: A named tuple of the created constraints.
-    @discardableResult public func pinSize(
+    @discardableResult func pinSize(
         to object: Pinnable
     ) -> (width: NSLayoutConstraint, height: NSLayoutConstraint) {
         let height = heightAnchor.pin(to: object.heightAnchor)
@@ -131,7 +131,7 @@ extension Pinnable {
     /// - Parameters:
     ///   - object: The size to constrain the receiver to.
     /// - Returns: A named tuple of the created constraints.
-    @discardableResult public func pinSize(
+    @discardableResult func pinSize(
         to size: CGSize
     ) -> (width: NSLayoutConstraint, height: NSLayoutConstraint) {
         let height = heightAnchor.pin(to: size.height)
@@ -152,7 +152,7 @@ extension Pinnable {
     /// - Parameters:
     ///   - object: The size to constrain the receiver's width and height to.
     /// - Returns: A named tuple of the created constraints.
-    @discardableResult public func pinSize(
+    @discardableResult func pinSize(
         to constant: CGFloat
     ) -> (width: NSLayoutConstraint, height: NSLayoutConstraint) {
         pinSize(to: CGSize(width: constant, height: constant))

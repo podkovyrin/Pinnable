@@ -7,13 +7,13 @@
 
 import UIKit
 
-extension NSLayoutDimension {
+public extension NSLayoutDimension {
     /// Constrain the receiver to a constant size.  The constraint is automatically activated.
     /// - Parameters:
     ///   - constant: The size to constrain the receiver to.
     ///   - priority: The priority of the constraint.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         to constant: CGFloat,
         priority: UILayoutPriority = .required
     ) -> NSLayoutConstraint {
@@ -27,7 +27,7 @@ extension NSLayoutDimension {
     ///   - constant: The size to constrain the receiver to.
     ///   - priority: The priority of the constraint.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         greaterThan constant: CGFloat,
         priority: UILayoutPriority = .required
     ) -> NSLayoutConstraint {
@@ -41,7 +41,7 @@ extension NSLayoutDimension {
     ///   - constant: The size to constrain the receiver to.
     ///   - priority: The priority of the constraint.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         lessThan constant: CGFloat,
         priority: UILayoutPriority = .required
     ) -> NSLayoutConstraint {
@@ -60,7 +60,7 @@ extension NSLayoutDimension {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         to anchor: NSLayoutDimension,
         multiplier: CGFloat = 1,
         constant: CGFloat = 0,
@@ -81,7 +81,7 @@ extension NSLayoutDimension {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         greaterThan anchor: NSLayoutDimension,
         multiplier: CGFloat = 1,
         constant: CGFloat = 0,
@@ -102,7 +102,7 @@ extension NSLayoutDimension {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         lessThan anchor: NSLayoutDimension,
         multiplier: CGFloat = 1, constant: CGFloat = 0,
         priority: UILayoutPriority = .required

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension NSLayoutAnchor {
+public extension NSLayoutAnchor {
     /// Create an equal-to constraint between the receiver and the provided layout anchor.  The constraint is automatically activated.
     ///
     /// If the receiver is an anchor on a `UIView`, this method disables `translatesAutoresizingMaskIntoConstraints` on that view.
@@ -17,7 +17,7 @@ extension NSLayoutAnchor {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         to anchor: NSLayoutAnchor<AnchorType>,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required
@@ -36,7 +36,7 @@ extension NSLayoutAnchor {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         greaterThan anchor: NSLayoutAnchor<AnchorType>,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required
@@ -55,7 +55,7 @@ extension NSLayoutAnchor {
     ///   - constant: An optional constant for the constraint. Defaults to 0.
     ///   - priority: An optional priority for the constraint. Defaults to `.required`.
     /// - Returns: The constraint that was created.
-    @objc @discardableResult public func pin(
+    @objc @discardableResult func pin(
         lessThan anchor: NSLayoutAnchor<AnchorType>,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required
