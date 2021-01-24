@@ -5,6 +5,8 @@
 //  Created by Kyle Bashour on 1/12/21.
 //
 
+// swiftlint:disable attributes
+
 import UIKit
 
 public extension NSLayoutDimension {
@@ -19,7 +21,7 @@ public extension NSLayoutDimension {
     ) -> NSLayoutConstraint {
         constraint(equalToConstant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Constrain the receiver greater-than-or-equal to a constant size.  The constraint is automatically activated.
@@ -33,7 +35,7 @@ public extension NSLayoutDimension {
     ) -> NSLayoutConstraint {
         constraint(greaterThanOrEqualToConstant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Constrain the receiver less-than-or-equal to a constant size.  The constraint is automatically activated.
@@ -47,7 +49,7 @@ public extension NSLayoutDimension {
     ) -> NSLayoutConstraint {
         constraint(lessThanOrEqualToConstant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Create an equal-to constraint between the receiver and the provided layout anchor. The constraint is automatically activated.
@@ -68,7 +70,7 @@ public extension NSLayoutDimension {
     ) -> NSLayoutConstraint {
         constraint(equalTo: anchor, multiplier: multiplier, constant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Create a greater-than-or-equal-to constraint between the receiver and the provided layout anchor. The constraint is automatically activated.
@@ -89,7 +91,7 @@ public extension NSLayoutDimension {
     ) -> NSLayoutConstraint {
         constraint(greaterThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Create a less-than-or-equal-to constraint between the receiver and the provided layout anchor. The constraint is automatically activated.
@@ -109,6 +111,6 @@ public extension NSLayoutDimension {
     ) -> NSLayoutConstraint {
         constraint(lessThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 }

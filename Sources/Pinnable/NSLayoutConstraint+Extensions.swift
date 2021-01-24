@@ -5,25 +5,19 @@
 //  Created by Kyle Bashour on 1/12/21.
 //
 
+// swiftlint:disable attributes
+
 import UIKit
 
 public extension NSLayoutConstraint {
-    /// Set `isActive` to true.
-    ///
-    /// - Returns: self
-    @discardableResult func activate() -> Self {
-        isActive = true
-        return self
+    /// Recursively activates array of arrays of constraints
+    class func activate(_ constraints: [Any]) {
+        let flatten: [NSLayoutConstraint] = constraints.flatten()
+        NSLayoutConstraint.activate(flatten)
     }
+}
 
-    /// Set `isActive` to false.
-    ///
-    /// - Returns: self
-    @discardableResult func deactivate() -> Self {
-        isActive = false
-        return self
-    }
-
+public extension NSLayoutConstraint {
     /// Set the priority on the constraint.
     ///
     /// - Parameter priority: The value of the priority.
@@ -35,6 +29,6 @@ public extension NSLayoutConstraint {
 
     internal func setUp() -> NSLayoutConstraint {
         (firstItem as? UIView)?.translatesAutoresizingMaskIntoConstraints = false
-        return activate()
+        return self
     }
 }

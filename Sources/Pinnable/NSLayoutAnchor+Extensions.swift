@@ -5,6 +5,8 @@
 //  Created by Kyle Bashour on 1/12/21.
 //
 
+// swiftlint:disable attributes
+
 import UIKit
 
 public extension NSLayoutAnchor {
@@ -24,7 +26,7 @@ public extension NSLayoutAnchor {
     ) -> NSLayoutConstraint {
         constraint(equalTo: anchor, constant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Create a greater-than-or-equal-to constraint between the receiver and the provided layout anchor.  The constraint is automatically activated.
@@ -43,7 +45,7 @@ public extension NSLayoutAnchor {
     ) -> NSLayoutConstraint {
         constraint(greaterThanOrEqualTo: anchor, constant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 
     /// Create a less-than-or-equal-to constraint between the receiver and the provided layout anchor.  The constraint is automatically activated.
@@ -62,6 +64,6 @@ public extension NSLayoutAnchor {
     ) -> NSLayoutConstraint {
         constraint(lessThanOrEqualTo: anchor, constant: constant)
             .prioritize(priority)
-            .setUp()
+            .disableTranslatesAutoresizingMaskIntoConstraintsIfNeeded()
     }
 }
